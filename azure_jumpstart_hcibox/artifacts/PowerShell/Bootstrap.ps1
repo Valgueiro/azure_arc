@@ -45,7 +45,7 @@ param (
 ## Setup basic environment
 #######################################################################
 # Copy PowerShell Profile and Reload
-Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/PSProfile.ps1") -OutFile $PsHome\Profile.ps1
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/PowerShell/PSProfile.ps1") -OutFile $PsHome\Profile.ps1
 .$PsHome\Profile.ps1
 
 # Creating HCIBox path
@@ -56,7 +56,7 @@ New-Item -Path $HCIPath -ItemType directory -Force
 # Downloading configuration file
 $ConfigurationDataFile = "$HCIPath\HCIBox-Config.psd1"
 [System.Environment]::SetEnvironmentVariable('HCIBoxConfigFile', $ConfigurationDataFile,[System.EnvironmentVariableTarget]::Machine)
-Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/HCIBox-Config.psd1") -OutFile $ConfigurationDataFile
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/PowerShell/HCIBox-Config.psd1") -OutFile $ConfigurationDataFile
 
 # Importing configuration data
 $HCIBoxConfig = Import-PowerShellDataFile -Path $ConfigurationDataFile
@@ -113,15 +113,15 @@ Remove-Item .\AzureCLI.msi
 Write-Host "Downloading Azure Stack HCI configuration scripts"
 Invoke-WebRequest "https://raw.githubusercontent.com/Azure/arc_jumpstart_docs/main/img/wallpaper/hcibox_wallpaper_dark.png" -OutFile $HCIPath\wallpaper.png
 Invoke-WebRequest https://aka.ms/wacdownload -OutFile "$($HCIBoxConfig.Paths["WACDir"])\WindowsAdminCenter.msi"
-Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/HCIBoxLogonScript.ps1") -OutFile $HCIPath\HCIBoxLogonScript.ps1
-Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/New-HCIBoxCluster.ps1") -OutFile $HCIPath\New-HCIBoxCluster.ps1
-Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/Configure-AKSWorkloadCluster.ps1") -OutFile $HCIPath\Configure-AKSWorkloadCluster.ps1
-Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/Configure-VMLogicalNetwork.ps1") -OutFile $HCIPath\Configure-VMLogicalNetwork.ps1
-Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/Generate-ARM-Template.ps1") -OutFile $HCIPath\Generate-ARM-Template.ps1
-Invoke-WebRequest ($templateBaseUrl + "artifacts/LogInstructions.txt") -OutFile $HCIBoxConfig.Paths["LogsDir"]\LogInstructions.txt
-Invoke-WebRequest ($templateBaseUrl + "artifacts/jumpstart-user-secret.yaml") -OutFile $HCIPath\jumpstart-user-secret.yaml
-Invoke-WebRequest ($templateBaseUrl + "artifacts/hci.json") -OutFile $HCIPath\hci.json
-Invoke-WebRequest ($templateBaseUrl + "artifacts/hci.parameters.json") -OutFile $HCIPath\hci.parameters.json
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/PowerShell/HCIBoxLogonScript.ps1") -OutFile $HCIPath\HCIBoxLogonScript.ps1
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/PowerShell/New-HCIBoxCluster.ps1") -OutFile $HCIPath\New-HCIBoxCluster.ps1
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/PowerShell/Configure-AKSWorkloadCluster.ps1") -OutFile $HCIPath\Configure-AKSWorkloadCluster.ps1
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/PowerShell/Configure-VMLogicalNetwork.ps1") -OutFile $HCIPath\Configure-VMLogicalNetwork.ps1
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/PowerShell/Generate-ARM-Template.ps1") -OutFile $HCIPath\Generate-ARM-Template.ps1
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/LogInstructions.txt") -OutFile $HCIBoxConfig.Paths["LogsDir"]\LogInstructions.txt
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/jumpstart-user-secret.yaml") -OutFile $HCIPath\jumpstart-user-secret.yaml
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/hci.json") -OutFile $HCIPath\hci.json
+Invoke-WebRequest ("https://raw.githubusercontent.com/valgueiro/azure_arc/main/azure_jumpstart_hcibox/artifacts/hci.parameters.json") -OutFile $HCIPath\hci.parameters.json
 
 # Replace password and DNS placeholder
 Write-Host "Updating config placeholders with injected values."
