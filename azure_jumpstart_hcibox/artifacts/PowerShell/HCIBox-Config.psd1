@@ -74,6 +74,17 @@
             IP          = "192.168.1.13/24"
             StorageAIP  = "10.71.1.11"
             StorageBIP  = "10.71.2.11"
+        }@{
+            Hostname    = "AzSHOST3"
+            IP          = "192.168.1.14/24"
+            StorageAIP  = "10.71.1.12"
+            StorageBIP  = "10.71.2.12"
+        },
+        @{
+            Hostname    = "AzSHOST4"
+            IP          = "192.168.1.15/24"
+            StorageAIP  = "10.71.1.13"
+            StorageBIP  = "10.71.2.13"
         }
     )
 
